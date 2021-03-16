@@ -1,4 +1,4 @@
-for (let i = 0; i < 100; i++) { // works also without let
+for (let i = 0; i < 100; i++) { // works also without let, but why?
     if (i % 2 === 0 && i % 3 === 0) {
         console.log('Fizz Bazz ', i);
     } else if (i % 2 === 0) {
