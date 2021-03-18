@@ -169,7 +169,7 @@ for (i = 0; i <= 10; i++) {
     fibPrev = fibSum;
     fibonaci.push(fibSum);
 };
-console.log(`This is Fibonaci Series: ${fibonaci}`);
+console.log(`This is Fibonaci Series: ${fibonaci}...`);
 
 
 console.log('--------------------');
