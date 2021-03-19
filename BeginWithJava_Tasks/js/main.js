@@ -148,9 +148,26 @@ console.log(`The smallest number is ${Math.min(...numbers2)}`);
 console.log('--------------------');
 console.log('Task 11');
 // Write a program to print out all Armstrong numbers between 1 and 500. 
-// If sum of cubes of each digit of the number is equal to the number itself, then the number is called an Armstrong number.
+// If sum of cubes of each digit of the number is equal to the number itself, 
+// then the number is called an Armstrong number.
 // For example, 153 = ( 1 * 1 * 1 ) + ( 5 * 5 * 5 ) + ( 3 * 3 * 3 )
-console.log('No idea, need more explanation...');
+for (i = 1; i <= 500; i++) {
+    let cube = 0;
+    let numSplit = [];
+    if (i < 10) {
+        cube = Math.pow(i, 3)
+    } else if (i >= 10 && i < 100) {
+        numSplit = i.toString().split('');
+        cube = Math.pow(parseInt(numSplit[0]), 3) + Math.pow(parseInt(numSplit[1]), 3);
+    } else {
+        numSplit = i.toString().split('');
+        cube = Math.pow(parseInt(numSplit[0]), 3) + Math.pow(parseInt(numSplit[1]), 3) +
+            Math.pow(parseInt(numSplit[2]), 3);
+    }
+    if (cube == i) {
+        console.log(`${i} is an Amrstrong number`);
+    }
+}
 
 
 console.log('--------------------');

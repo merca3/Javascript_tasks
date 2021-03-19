@@ -4,14 +4,39 @@
 // 28
 // 496
 
-let perfPart = 0;
-for (let counter = 1; counter <= 500; counter++) {
-    for (let i = 2; i <= counter; i++) {
-        if (counter % i === 0 && counter !== i) {
-            perfPart = perfPart + i;
+// int main() {
+
+//     int number = 1, sum = 0;
+
+//     while (number <= 1000) {
+
+//         sum = 0;
+//         for (int i = 1; i < number; i++) {
+
+//             if (number % i == 0) {
+//                 sum += i;
+//             }
+//         }
+
+//         if (sum == number) {
+//             printf("%d is perfect\n", number);
+//         }
+//         number++;
+//     }
+//     return 0;
+// }
+
+
+let counter = 1;
+while (counter <= 500) {
+    let sum = 0;
+    for (let i = 1; i < counter; i++) {
+        if (counter % i == 0 && counter !== i) {
+            sum += i;
         }
     }
-    if (perfPart = counter) {
+    if (sum = counter) {
         console.log(counter);
     }
+    counter++;
 }
