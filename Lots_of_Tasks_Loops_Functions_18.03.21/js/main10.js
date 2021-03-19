@@ -9,12 +9,14 @@ for (let i = 1; i <= numLong; i++) {
 }
 console.log(`The sum of digits of number ${number} is ${sum}`);
 
-// var value = 1234,
-//     sum = 0;
 
-// while (value) {
-//     sum += value % 10;
-//     value = Math.floor(value / 10);
-// }
+// Version 2, also works
 
-// console.log(sum);
+let numSplit = number.toString().split('');
+console.log(numSplit);
+sum = 0;
+for (i = 0; i < numLong; i++) {
+    // console.log(numSplit[i]);
+    sum += parseInt(numSplit[i]);
+};
+console.log(`The sum of digits of number ${number} is ${sum}`);
