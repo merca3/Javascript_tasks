@@ -5,7 +5,7 @@ the content of that cell.
 Table + form with 3 elements: input field and 2x select
 fields to pick the row and column -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -15,37 +15,110 @@ fields to pick the row and column -->
 
 <body>
     <table id="sampleTable" border="1">
-        <tr>
-            <td>Row1 cell1</td>
-            <td>Row1 cell2</td>
-        </tr>
-        <tr>
-            <td>Row2 cell1</td>
-            <td>Row2 cell2</td>
-        </tr>
+        <tbody id="table-body">
+            <tr>
+                <td>Row1 cell1</td>
+                <td>Row1 cell2</td>
+                <td>Row1 cell3</td>
+            </tr>
+            <tr>
+                <td>Row2 cell1</td>
+                <td>Row2 cell2</td>
+                <td>Row2 cell3</td>
+            </tr>
+            <tr>
+                <td>Row3 cell1</td>
+                <td>Row3 cell2</td>
+                <td>Row3 cell3</td>
+            </tr>
+        </tbody>
     </table><br>
-    <!-- <input type="button" onclick="insert_Row()" value="Insert row"> -->
-    <div>
-        <label for="new-cell-text">Add new cell text</label>
-        <input type="text" id="new-cell-text">
-    </div>
-    <div>
-        <span>Choose row:</span>
-        <select name="row" id="choose-row">
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
-    </div>
-    <div>
-        <span>Choose column:</span>
-        <select name="column" id="choose-column">
-            <option value="11">1</option>
-            <option value="22">2</option>
-        </select>
-    </div>
-    <button onclick="changeCell()">Add cell!</button>
+    <form onsubmit="changeCell(event)">
+        <div>
+            <label for="new-cell-text">Add new cell text</label>
+            <input type="text" id="new-cell-text">
+        </div>
+        <div>
+            <span>Choose row:</span>
+            <select name="row" id="choose-row">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div>
+            <span>Choose column:</span>
+            <select name="column" id="choose-column">
+                <option value="11">1</option>
+                <option value="22">2</option>
+                <option value="33">3</option>
+            </select>
+        </div>
+        <button type="submit">Add cell!</button>
+    </form>
 
+    <script src="js/main6.js "></script>
+</body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tbody id="table-body">
+            <tr>
+                <td>Row 1 Cell 1</td>
+                <td>Row 1 Cell 2</td>
+                <td>Row 1 Cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 2 Cell 1</td>
+                <td>Row 2 Cell 2</td>
+                <td>Row 2 Cell 3</td>
+            </tr>
+            <tr>
+                <td>Row 3 Cell 1</td>
+                <td>Row 3 Cell 2</td>
+                <td>Row 3 Cell 3</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <form onsubmit="changeCell(event)">
+            <div>
+                <label for="pick-row">Pick row:</label>
+                <select id="pick-row">
+                    <option value="1">Row 1</option>
+                    <option value="2">Row 2</option>
+                    <option value="3">Row 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="pick-col">Pick col:</label>
+                <select id="pick-col">
+                    <option value="1">Col 1</option>
+                    <option value="2">Col 2</option>
+                    <option value="3">Col 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="new-cell-value">New value:</label>
+                <input type="text" id="new-cell-value">
+            </div>
+            <div>
+                <button type="submit">Change value</button>
+            </div>
+        </form>
+    </div>
     <script src="js/main6.js"></script>
 </body>
 
