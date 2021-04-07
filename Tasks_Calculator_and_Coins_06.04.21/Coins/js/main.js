@@ -1,25 +1,31 @@
-let totalCoinsInt = parseInt(document
-    .getElementById('total-coins').innerHTML);
-let availCoinsInt = parseInt(document
-    .getElementById('available-coins').innerHTML);
-let price1 = 10; // for this and next variables can use 
-let price2 = 90; // also DOM and parseInt
-let upg1xAmount = 0;
-let upg10xAmount = 0;
-let counter;
+const totalCoins = document.getElementById('total-coins');
+const availCoins = document.getElementById('available-coins');
+const price1El = document.getElementById('price1');
+const price2El = document.getElementById('price2');
+const upg1xEl = document.getElementById('upgrade1x');
+const upg10xEl = document.getElementById('upgrade10x');
+const upg1xBtn = document.getElementById('up1x');
+const upg10xBtn = document.getElementById('up10x');
+
+let totalCoinsInt = parseInt(totalCoins.innerHTML);
+let availCoinsInt = parseInt(availCoins.innerHTML);
+let price1 = parseInt(price1El.innerHTML);
+let price2 = parseInt(price2El.innerHTML);
+let upg1xAmount = parseInt(upg1xEl.innerHTML)
+let upg10xAmount = parseInt(upg10xEl.innerHTML)
 
 
 document.getElementById('click-me')
     .addEventListener('click', function() {
         totalCoinsInt++;
         availCoinsInt++;
-        document.getElementById('total-coins').innerHTML = totalCoinsInt;
-        document.getElementById('available-coins').innerHTML = availCoinsInt;
+        totalCoins.innerHTML = totalCoinsInt;
+        availCoins.innerHTML = availCoinsInt;
         if (availCoinsInt >= 10) {
-            document.getElementById('up1x').disabled = false;
+            upg1xBtn.disabled = false;
         }
         if (availCoinsInt >= 90) {
-            document.getElementById('up10x').disabled = false;
+            upg10xBtn.disabled = false;
         }
     });
 
@@ -29,14 +35,14 @@ document.getElementById('up1x')
             availCoinsInt = availCoinsInt - price1;
             price1 = Math.round(price1 * 1.1);
             upg1xAmount++;
-            document.getElementById('upgrade1x').innerHTML = upg1xAmount;
-            document.getElementById('price1').innerHTML = price1;
-            document.getElementById('available-coins').innerHTML = availCoinsInt;
+            upg1xEl.innerHTML = upg1xAmount;
+            price1El.innerHTML = price1;
+            availCoins.innerHTML = availCoinsInt;
             setInterval(function() {
                 totalCoinsInt++;
                 availCoinsInt++;
-                document.getElementById('total-coins').innerHTML = totalCoinsInt;
-                document.getElementById('available-coins').innerHTML = availCoinsInt;
+                totalCoins.innerHTML = totalCoinsInt;
+                availCoins.innerHTML = availCoinsInt;
             }, 1000)
         }
     });
@@ -47,14 +53,14 @@ document.getElementById('up10x')
             availCoinsInt = availCoinsInt - price2;
             price2 = Math.round(price2 * 1.1);
             upg10xAmount++;
-            document.getElementById('upgrade10x').innerHTML = upg10xAmount;
-            document.getElementById('price2').innerHTML = price2;
-            document.getElementById('available-coins').innerHTML = availCoinsInt;
+            upg10xEl.innerHTML = upg10xAmount;
+            price2El.innerHTML = price2;
+            availCoins.innerHTML = availCoinsInt;
             setInterval(function() {
                 totalCoinsInt += 10;
                 availCoinsInt += 10;
-                document.getElementById('total-coins').innerHTML = totalCoinsInt;
-                document.getElementById('available-coins').innerHTML = availCoinsInt;
+                totalCoins.innerHTML = totalCoinsInt;
+                availCoins.innerHTML = availCoinsInt;
             }, 1000)
         }
     });
