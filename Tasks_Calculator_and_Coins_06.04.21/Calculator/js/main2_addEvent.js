@@ -35,5 +35,5 @@ document.getElementById('eqn-bg')
         const result = eval(counting);
         screened.innerText = result;
         // fullNum = '';
-        counting = '';
+        counting = result;
     })

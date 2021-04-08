@@ -32,6 +32,13 @@ function changeCoinsInnerHTML() {
     availCoins.innerHTML = availCoinsInt;
 }
 
+setInterval(function() {
+    totalCoinsInt += upg1xAmount + upg10xAmount * 10;
+    availCoinsInt += upg1xAmount + upg10xAmount * 10;
+    changeCoinsInnerHTML()
+    disableBtns();
+}, 1000);
+
 
 document.getElementById('click-me')
     .addEventListener('click', function() {
@@ -50,13 +57,8 @@ document.getElementById('up1x')
             upg1xEl.innerHTML = upg1xAmount;
             price1El.innerHTML = price1;
             availCoins.innerHTML = availCoinsInt;
-            setInterval(function() {
-                totalCoinsInt++;
-                availCoinsInt++;
-                changeCoinsInnerHTML()
-                disableBtns();
-            }, 1000);
-        }
+            disableBtns();
+        };
     });
 
 document.getElementById('up10x')
@@ -68,11 +70,6 @@ document.getElementById('up10x')
             upg10xEl.innerHTML = upg10xAmount;
             price2El.innerHTML = price2;
             availCoins.innerHTML = availCoinsInt;
-            setInterval(function() {
-                totalCoinsInt += 10;
-                availCoinsInt += 10;
-                changeCoinsInnerHTML()
-                disableBtns();
-            }, 1000);
+            disableBtns();
         }
     });
