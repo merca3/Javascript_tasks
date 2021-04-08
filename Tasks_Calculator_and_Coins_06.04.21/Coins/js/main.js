@@ -11,27 +11,39 @@ let totalCoinsInt = parseInt(totalCoins.innerHTML);
 let availCoinsInt = parseInt(availCoins.innerHTML);
 let price1 = parseInt(price1El.innerHTML);
 let price2 = parseInt(price2El.innerHTML);
-let upg1xAmount = parseInt(upg1xEl.innerHTML)
-let upg10xAmount = parseInt(upg10xEl.innerHTML)
+let upg1xAmount = parseInt(upg1xEl.innerHTML);
+let upg10xAmount = parseInt(upg10xEl.innerHTML);
+
+function disableBtns() {
+    if (availCoinsInt < price1) {
+        upg1xBtn.disabled = true;
+    } else {
+        upg1xBtn.disabled = false;
+    };
+    if (availCoinsInt < price2) {
+        upg10xBtn.disabled = true;
+    } else {
+        upg10xBtn.disabled = false;
+    };
+}
+
+function changeCoinsInnerHTML() {
+    totalCoins.innerHTML = totalCoinsInt;
+    availCoins.innerHTML = availCoinsInt;
+}
 
 
 document.getElementById('click-me')
     .addEventListener('click', function() {
         totalCoinsInt++;
         availCoinsInt++;
-        totalCoins.innerHTML = totalCoinsInt;
-        availCoins.innerHTML = availCoinsInt;
-        if (availCoinsInt >= 10) {
-            upg1xBtn.disabled = false;
-        }
-        if (availCoinsInt >= 90) {
-            upg10xBtn.disabled = false;
-        }
+        changeCoinsInnerHTML();
+        disableBtns();
     });
 
 document.getElementById('up1x')
     .addEventListener('click', function() {
-        if (availCoinsInt >= 10) {
+        if (availCoinsInt >= price1) {
             availCoinsInt = availCoinsInt - price1;
             price1 = Math.round(price1 * 1.1);
             upg1xAmount++;
@@ -41,15 +53,15 @@ document.getElementById('up1x')
             setInterval(function() {
                 totalCoinsInt++;
                 availCoinsInt++;
-                totalCoins.innerHTML = totalCoinsInt;
-                availCoins.innerHTML = availCoinsInt;
-            }, 1000)
+                changeCoinsInnerHTML()
+                disableBtns();
+            }, 1000);
         }
     });
 
 document.getElementById('up10x')
     .addEventListener('click', function() {
-        if (availCoinsInt >= 90) {
+        if (availCoinsInt >= price2) {
             availCoinsInt = availCoinsInt - price2;
             price2 = Math.round(price2 * 1.1);
             upg10xAmount++;
@@ -59,8 +71,8 @@ document.getElementById('up10x')
             setInterval(function() {
                 totalCoinsInt += 10;
                 availCoinsInt += 10;
-                totalCoins.innerHTML = totalCoinsInt;
-                availCoins.innerHTML = availCoinsInt;
-            }, 1000)
+                changeCoinsInnerHTML()
+                disableBtns();
+            }, 1000);
         }
     });
