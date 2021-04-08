@@ -2,10 +2,6 @@ let screened = document.getElementById('screen');
 let counting = '';
 // let fullNum = '';
 
-function updateScreenedText() {
-    screened.innerText += this.innerText;
-}
-
 document.getElementById('delete')
     .addEventListener('click', function() {
         screened.innerText = '';
@@ -20,7 +16,7 @@ document.querySelectorAll('.operator').forEach(item => {
             screened.innerText += '*';
             counting += '*';
         } else {
-            updateScreenedText();
+            screened.innerText += this.innerText;
             counting += this.innerText;
         }
     })
@@ -29,7 +25,7 @@ document.querySelectorAll('.operator').forEach(item => {
 document.querySelectorAll('.num').forEach(item => {
     item.addEventListener('click', function() {
         // fullNum += this.innerText;
-        updateScreenedText();
+        screened.innerText += this.innerText;
         counting += this.innerText;
     })
 });
