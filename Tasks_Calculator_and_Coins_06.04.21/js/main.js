@@ -1,40 +1,36 @@
 let activeNumber = '';
 let activeOperator = '';
 let storedNumber = '';
+let screened = document.getElementById('screen');
 
 
 function digitIsPressed(digit) {
     activeNumber += digit;
-    updateScreen();
+    screened.innerHTML += digit;
+    doMath();
 }
 
 function operatorIsPressed(operator) {
-    // updateScreen();
     activeOperator = operator;
-    doMath();
-    updateScreen();
-    storedNumber = activeNumber;
-    activeNumber = '';
-    activeOperator = '';
+    screened.innerHTML += activeOperator;
+    if (storedNumber !== '') {
+        doMath();
+    } else {
+        storedNumber = activeNumber;
+        activeNumber = '';
+    }
 }
 
 function equalsIsPressed() {
-
     doMath();
-    updateScreen();
-
+    screened.innerHTML = storedNumber;
 }
 
 function clearScreen() {
     activeNumber = '';
     activeOperator = '';
     storedNumber = '';
-    updateScreen();
-}
-
-function updateScreen() {
-    document.getElementById('screen').innerHTML = activeNumber + activeOperator;
-    // console.log(activeNumber + activeOperator);
+    screened.innerHTML = '';
 }
 
 function doMath() {
@@ -47,18 +43,15 @@ function doMath() {
             case '-':
                 resultNum = parseFloat(storedNumber) - parseFloat(activeNumber);
                 break;
-            case 'x':
+            case '*':
                 resultNum = parseFloat(storedNumber) * parseFloat(activeNumber);
                 break;
             case '/':
                 resultNum = parseFloat(storedNumber) / parseFloat(activeNumber);
                 break;
         }
-        activeNumber = resultNum;
+        console.log(resultNum)
+        storedNumber = resultNum;
+        activeNumber = '';
     }
 }
-
-let num1 = '1';
-let num2 = '21';
-num1 = parseFloat(num1) + parseFloat(num2);
-console.log(num1);
